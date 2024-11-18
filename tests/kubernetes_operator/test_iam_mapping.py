@@ -7,6 +7,7 @@ import yaml
 from pytest import fixture, raises
 from kubernetes import client
 
+
 import src.kubernetes_operator.iam_mapping as iam_mapping
 
 BASE_PATH = "src.kubernetes_operator.iam_mapping"
@@ -328,3 +329,11 @@ def test_get_cm_identity_mappings_with_empty_configmap_returns_no_identity():
     ret = iam_mapping.get_cm_identity_mappings(CONFIGMAP_MISSING_DATA)
 
     assert len(ret) == 0
+
+def test_get_user_1(generic_string):
+    user = iam_mapping.get_user_1()
+    return user.get(generic_string)
+
+def test_get_user_2(generic_string):
+    user = iam_mapping.get_user_2(generic_string)
+    return user.get()

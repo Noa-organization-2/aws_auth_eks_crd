@@ -5,6 +5,7 @@ from copy import deepcopy
 from os import environ
 from pathlib import Path
 from typing import List
+import aiohttp
 
 import kopf
 import yaml
@@ -275,3 +276,17 @@ def get_project_root() -> Path:
     """
     path = Path(__file__)
     return path.parent.parent.parent
+
+async def get_user_1():
+    return aiohttp.ClientSession()
+
+class User:
+    def __init__(self, name):
+        self.name = name
+
+    def get(self):
+        return self.name
+
+async def get_user_2(name):
+    return User(name)
+    
